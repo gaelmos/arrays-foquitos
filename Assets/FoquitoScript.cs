@@ -6,7 +6,7 @@ public class FoquitoScript : MonoBehaviour
 {
     [SerializeField] GameObject[] colors;
     public int currentLightIndex =-1;
-
+    private int cycleCount = 0;
     void Start()
     {
         
@@ -24,6 +24,11 @@ public class FoquitoScript : MonoBehaviour
         if (currentLightIndex >= colors.Length)
         {
             currentLightIndex = 0;
+            cycleCount++;
+            if(cycleCount >= 3)
+            {
+                DestroyFoquito();
+            }
         }
         DeactivateAllLights();
         colors[currentLightIndex].SetActive(true);
@@ -51,5 +56,9 @@ public class FoquitoScript : MonoBehaviour
     public void ActivateRepeating(float t)
     {
         InvokeRepeating(nameof(ActivateNextLight),0,t);
+    }
+    void DestroyFoquito()
+    {
+        Destroy(gameObject);
     }
 }
