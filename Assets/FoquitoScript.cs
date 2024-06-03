@@ -6,7 +6,7 @@ public class FoquitoScript : MonoBehaviour
 {
     [SerializeField] GameObject[] colors;
     public int currentLightIndex =-1;
-    private int cycleCount = 0;
+    public int contador= 0;
     void Start()
     {
         
@@ -24,8 +24,8 @@ public class FoquitoScript : MonoBehaviour
         if (currentLightIndex >= colors.Length)
         {
             currentLightIndex = 0;
-            cycleCount++;
-            if(cycleCount >= 3)
+            contador++;
+            if(contador >= 3)
             {
                 DestroyFoquito();
             }
